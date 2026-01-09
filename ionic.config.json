@@ -1,0 +1,7 @@
+{
+  "name": "eg4ConnectDemo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
