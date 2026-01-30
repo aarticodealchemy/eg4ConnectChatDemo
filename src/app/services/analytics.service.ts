@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import moment from 'moment';
 import { Observable, of } from 'rxjs';
 import { GraphScale, MomentUnit } from '../core/app.type';
-import { GraphDataPoint, SimpleGraphParams } from '../models/app.model';
+import { GraphDataPoint } from '../models/app.model';
 
 @Injectable({
   providedIn: 'root',

@@ -66,3 +66,21 @@ ion-searchbar.app-primary-searchbar {
 ion-input.app-primary-input.ion-dirty.ion-touched.ion-invalid {
   border-color: var(--ion-color-danger) !important;
 }
+
+/* EPT AI Chatbox UI Fixes */
+
+#eptai-chat-container:not(.minimized) {
+  margin: auto !important;
+  justify-content: center !important;
+  display: flex !important;
+  width: auto !important;
+  gap: 8px !important;
+  padding: 16px !important;
+  font-family: poppins !important;
+}
+
+#eptai-chat-container {
+  &.minimized {
+    display: none !important;
+  }
+}

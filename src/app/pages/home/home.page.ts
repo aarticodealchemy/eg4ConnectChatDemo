@@ -10,25 +10,21 @@ import {
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {
-  IonContent,
-  IonDatetime,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonModal,
-} from '@ionic/angular/standalone';
+import { IonContent, IonDatetime, IonFab, IonFabButton, IonIcon, IonInput, IonItem, IonModal } from '@ionic/angular/standalone';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import moment from 'moment';
 import { BaseChartDirective } from 'ng2-charts';
+import { addIcons } from 'ionicons';
+import { chatbubbleEllipsesOutline } from 'ionicons/icons';
 
+import { PERIOD_OPTIONS, TAB_OPTIONS } from 'src/app/core/app.constant';
+import { PeriodType } from 'src/app/core/app.enum';
 import { AnalyticsService } from 'src/app/services/analytics.service';
+import { EptAiService } from 'src/app/services/ept-ai.service';
 import { AppHeaderComponent } from '../../components/app-header/app-header.component';
 import { CustomSegmentComponent } from '../../components/custom-segment/custom-segment.component';
 import { UsageCardComponent } from '../../components/usage-card/usage-card.component';
 import { GraphDataPoint, SegmentOption } from '../../models/app.model';
-import { PeriodType } from 'src/app/core/app.enum';
-import { PERIOD_OPTIONS, TAB_OPTIONS } from 'src/app/core/app.constant';
 
 Chart.register(...registerables);
 
@@ -50,13 +46,16 @@ Chart.register(...registerables);
     AppHeaderComponent,
     CustomSegmentComponent,
     UsageCardComponent,
-  ],
+    IonFabButton,
+    IonFab
+],
 })
 export class HomePage {
   private readonly analyticsService = inject(AnalyticsService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly route = inject(ActivatedRoute);
   private readonly fb = inject(FormBuilder);
+  private readonly eptAi = inject(EptAiService);
   readonly today = moment().toISOString();
 
   /* ---------------- Signals ---------------- */
@@ -141,6 +140,8 @@ export class HomePage {
 
   /* ---------------- Constructor Logic via effect ---------------- */
   constructor() {
+    addIcons({ chatbubbleEllipsesOutline });
+
     this.inverterSN.set('MOCK_INVERTER_SN'); // or real SN from storage
 
     // tab from query params
@@ -373,5 +374,11 @@ export class HomePage {
       pointBorderWidth: 2,
       borderWidth: 3,
     };
+  }
+
+  /* ---------------- Chatbot ---------------- */
+
+  openChat() {
+    this.eptAi.show();
   }
 }
