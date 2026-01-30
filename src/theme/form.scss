@@ -1,0 +1,61 @@
+.form {
+  padding: 0 6px;
+}
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .input-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    ion-input {
+      font-size: 16px;
+      --color: var(--ion-color-primaryDark);
+      --padding-top: 6px;
+      --placeholder-color: var(--ion-color-primaryDark);
+      --placeholder-opacity: 40%;
+      ion-label[slot="label"] {
+        font-size: 14px;
+        color: var(--ion-color-primaryDark);
+        margin: 0;
+        opacity: 60%;
+      }
+      .password-toggle-icon {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        z-index: 100;
+        font-size: 18px;
+      }
+      &:not(.has-focus) {
+        .password-toggle-icon {
+          --ion-color-primary: var(--ion-color-primaryDark);
+        }
+      }
+    }
+    ion-select{
+      --padding-start: 0;
+      --padding-end: 0; 
+      --padding-top: 0;
+      --padding-bottom: 0; 
+    }
+  }
+
+  .message-block {
+    width: 100%;
+    .message {
+      font-size: 12px;
+      text-align: start;
+      margin-top: 6px;
+      &.error {
+        color: var(--ion-color-danger);
+        margin: 0 4px;
+        display: block;
+      }
+    }
+  }
+}

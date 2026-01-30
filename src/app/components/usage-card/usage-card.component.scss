@@ -1,0 +1,33 @@
+.total-usage-card {
+  background-color: var(--blue-dark);
+  box-shadow: var(--box-shadow1);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.usage-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.usage-value {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  color: var(--text-secondary);
+}
+
+.usage-unit {
+  font-size: 18px;
+  font-weight: 400;
+  margin-left: 0.25rem;
+  color: var(--text-secondary);
+}
+
+.change-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}

@@ -1,0 +1,86 @@
+.action-btn {
+  margin: 0;
+  font-weight: 500;
+  --border-radius: 0;
+  --background: var(--ion-color-primaryDark);
+  --background-hover: var(--ion-color-primaryDark-tint);
+  --background-activated: var(--ion-color-primaryDark-shade);
+  --color: white;
+
+  &[disabled] {
+    --background: var(--ion-color-primaryDark-tint);
+    opacity: 0.7;
+  }
+
+  &.danger {
+    --background: #f55b5e;
+    --background-hover: var(--ion-color-danger-tint);
+    --background-activated: var(--ion-color-danger-shade);
+    --color: white;
+
+    &[disabled] {
+      --background: var(--ion-color-danger-tint);
+      opacity: 0.7;
+    }
+  }
+}
+
+.plain-text-button {
+  --box-shadow: none;
+  --border-radius: 0 !important;
+  --border-radius: 0 !important;
+  --padding-top: 2px !important;
+  --padding-bottom: 2px !important;
+  --padding-end: 2px !important;
+  --padding-start: 2px !important;
+  --color: currentColor;
+  --background: transparent;
+  width: fit-content;
+  margin: 0 !important;
+  text-transform: capitalize;
+  min-height: fit-content !important;
+}
+
+.primary-action-btn {
+  font-size: 14px !important;
+  --padding-top: 8px !important;
+  --padding-bottom: 8px !important;
+  --padding-start: 8px !important;
+  --padding-end: 8px !important;
+  --border-radius: 4px !important;
+  --background: var(--blue-dark) !important;
+  --color: var(--ion-color-primaryDark) !important;
+  --background-activated: var(--blue-dark) !important;
+  --color-activated: var(--ion-color-primaryDark) !important;
+  --box-shadow: var(--box-shadow4) !important;
+  min-height: fit-content !important;
+
+  ion-icon {
+    font-size: 24px;
+    margin-right: 4px;
+  }
+
+  .button-label {
+    width: 100%;
+    text-align: start;
+  }
+
+  .check-icon {
+    color: var(--ion-color-primaryDark) !important;
+  }
+
+}
+
+@media (max-width: 320px) {
+  .primary-action-btn {
+    font-size: 12px !important;
+    --padding-top: 6px !important;
+    --padding-bottom: 6px !important;
+    --padding-start: 6px !important;
+    --padding-end: 6px !important;
+
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+}

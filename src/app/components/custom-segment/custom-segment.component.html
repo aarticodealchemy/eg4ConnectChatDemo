@@ -1,0 +1,19 @@
+<div class="segment-wrapper">
+  @if (label()) {
+  <label class="segment-label">{{ label() }}</label>
+  }
+  <ion-segment
+    [value]="currentValue()"
+    (ionChange)="onSegmentChange($event)"
+    [disabled]="disabled()"
+    mode="ios"
+    class="custom-segment"
+    [scrollable]="true"
+  >
+    @for (option of options(); track option.value) {
+    <ion-segment-button [value]="option.value" [contentId]="option.value">
+      <ion-label class="ion-no-margin"> {{ option.label }} </ion-label>
+    </ion-segment-button>
+    }
+  </ion-segment>
+</div>
