@@ -10,28 +10,59 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+@use "@ionic/angular/css/core.css" as *;
 
 /* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+@use "@ionic/angular/css/normalize.css" as *;
+@use "@ionic/angular/css/structure.css" as *;
+@use "@ionic/angular/css/typography.css" as *;
+@use "@ionic/angular/css/display.css" as *;
 
 /* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+@use "@ionic/angular/css/padding.css" as *;
+@use "@ionic/angular/css/float-elements.css" as *;
+@use "@ionic/angular/css/text-alignment.css" as *;
+@use "@ionic/angular/css/text-transformation.css" as *;
+@use "@ionic/angular/css/flex-utils.css" as *;
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+@use "theme/variables";
+@use "theme/dark-mode-variable";
+@use "theme/button";
+@use "theme/app";
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+.confirm-middle-popover-modal {
+  --width: 90%;
+  --height: fit-content;
+  --max-width: 320px;
+  --border-radius: 12px;
+  --backdrop-opacity: 0.6;
+  --box-shadow: var(--box-shadow2);
+}
+
+ion-searchbar.app-primary-searchbar {
+  .searchbar-input-container {
+    min-height: 44px !important;
+    .searchbar-input {
+      --placeholder-color: var(--place-holder-color) !important;
+      border: 1px solid var(--ion-line-color) !important;
+      padding-inline-start: 40px !important;
+    }
+    .searchbar-search-icon {
+      color: var(--place-holder-color) !important;
+      margin-inline-start: 8px !important;
+      width: 22px !important;
+      
+    }
+    .searchbar-clear-button{
+      inset-inline-end: 8px !important;
+      color: var(--place-holder-color) !important;
+      ion-icon {
+        width: 22px !important;
+      }
+    }
+  }
+}
+
+ion-input.app-primary-input.ion-dirty.ion-touched.ion-invalid {
+  border-color: var(--ion-color-danger) !important;
+}

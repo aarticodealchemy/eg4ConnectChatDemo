@@ -1,0 +1,118 @@
+<div class="ion-page">
+<app-header title="Energy Details" defaultHref="/" />
+
+<ion-content class="page-content ion-padding">
+  <div class="home-container">
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+      <app-custom-segment
+        [options]="tabOptions"
+        [value]="selectedTab()"
+        (valueChange)="onTabChange($event)"
+      ></app-custom-segment>
+    </div>
+
+    <!-- Animated Content Area -->
+    <div class="content-container" [class.content-fade-in]="isAnimating()">
+      <!-- Total Usage Section -->
+      <app-usage-card [totalUsage]="totalUsage()" />
+
+      <!-- Period Selector -->
+      <div class="period-container" [formGroup]="dateForm">
+        <app-custom-segment
+          [options]="periodOptions"
+          [value]="selectedPeriod()"
+          (valueChange)="onPeriodChange($event)"
+        ></app-custom-segment>
+
+        @if (selectedPeriod() === PeriodType.custom) {
+        <div class="custom-date-row ">
+          <div class="date-picker-col">
+            <ion-item lines="none" class="date-item" id="start-date-trigger">
+              <ion-input
+                [value]="dateForm.get('startDate')?.value | date: 'MM/dd/yyyy'"
+                placeholder="mm/dd/yyyy"
+                readonly
+                class="date-input"
+              ></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="date-picker-col">
+            <ion-item lines="none" class="date-item" id="end-date-trigger">
+              <ion-input
+                [value]="dateForm.get('endDate')?.value | date: 'MM/dd/yyyy'"
+                placeholder="mm/dd/yyyy"
+                readonly
+                class="date-input"
+              ></ion-input>
+            </ion-item>
+          </div>
+        </div>
+
+        <ion-modal trigger="start-date-trigger" [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime
+              formControlName="startDate"
+              presentation="date"
+              [showDefaultButtons]="true"
+              (ionChange)="startDateChange()"
+              mode="ios"
+              class="custom-datetime"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+
+        <!-- End Date Modal -->
+        <ion-modal trigger="end-date-trigger" [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime
+              formControlName="endDate"
+              presentation="date"
+              [showDefaultButtons]="true"
+              [min]="dateForm.get('startDate')?.value"
+              (ionChange)="endDateChange()"
+              mode="ios"
+              class="custom-datetime"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+        }
+      </div>
+
+      <!-- Chart Section -->
+      <div class="chart-card">
+        <!-- Date Navigation -->
+        <div class="chart-header">
+          <ion-icon
+            name="chevron-back-outline"
+            class="chart-nav-icon"
+            (click)="previousPeriod()"
+          ></ion-icon>
+
+          <span class="chart-date-range"> {{ currentDateRange() }} </span>
+
+          <ion-icon
+            name="chevron-forward-outline"
+            class="chart-nav-icon"
+            (click)="nextPeriod()"
+          ></ion-icon>
+        </div>
+
+        <!-- Chart -->
+        <div class="chart-container">
+          <canvas
+            baseChart
+            [data]="lineChartData()"
+            [options]="lineChartOptions"
+            [type]="'line'"
+            class="chart-canvas"
+          >
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+</div>
+
